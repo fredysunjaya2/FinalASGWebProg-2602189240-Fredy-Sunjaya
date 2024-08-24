@@ -12,10 +12,13 @@ class Message extends Model
 
     protected $guarded = [];
 
-    protected $with = ['user'];
+    protected $with = ['sender', 'receiver'];
 
-    public function user(): BelongsTo {
-        return $this->belongsTo(User::class);
+    public function sender(): BelongsTo {
+        return $this->belongsTo(User::class, 'sender_id');
     }
 
+    public function receiver(): BelongsTo {
+        return $this->belongsTo(User::class, 'receiver_id');
+    }
 }

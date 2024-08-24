@@ -14,7 +14,12 @@
                 <p class="card-text">{{ $item->friend->fields_of_hobby }}</p>
             </div>
             <div class="card-footer text-body-secondary d-flex justify-content-end">
-
+                <form action="{{ route('message', $item->friend_id) }}" method="GET">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">
+                        Message
+                    </button>
+                </form>
             </div>
         </div>
     </div>

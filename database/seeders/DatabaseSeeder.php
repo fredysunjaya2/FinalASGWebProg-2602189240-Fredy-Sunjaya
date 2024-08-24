@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             }, $randomHobbies);
 
             // Combine into a string
-            $hobbiesString = implode(', ', $selectedHobbies);
+            $hobbiesString = implode(',', $selectedHobbies);
 
             // Return or use the string
             return $hobbiesString;

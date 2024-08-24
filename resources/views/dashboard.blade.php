@@ -4,6 +4,25 @@
 @section('activeHome', 'active')
 
 @section('content')
+<div class="row mb-5">
+    <form method="GET" action="{{ route('dashboard') }}" class="col-6">
+        @csrf
+        <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" name="hobby" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+    </form>
+    <form method="GET" action="{{ route('dashboard') }}" class="col-6">
+        @csrf
+        <select class="" name="gender" id="gender">
+            <option class="">Select By Gender</option>
+            <option value="Male" class="">Male</option>
+            <option value="Female" class="">Female</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Apply Filter</button>
+    </form>
+</div>
+
 <div class="row row-cols-1 row-cols-md-5 g-4">
     @foreach ($users as $item)
     <div class="col">
@@ -12,6 +31,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $item->name }}</h5>
                 <p class="card-text">{{ $item->fields_of_hobby }}</p>
+                <p class="card-text">{{ $item->gender }}</p>
             </div>
             <div class="card-footer text-body-secondary d-flex justify-content-end">
                 <form action="{{ route('send-friend-request') }}" method="POST">

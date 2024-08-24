@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hobby;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -11,13 +12,33 @@ use Symfony\Component\HttpFoundation\Response;
 class UserController extends Controller
 {
     //
-    public function index() {
-        if(Auth::check()) {
-            $users = User::where("id", "!=", Auth::user()->id)
-            ->where('isPrivate', '=', false)->paginate(10);
-        } else {
-            $users = User::where('isPrivate', '=', false)->paginate(10);
+    public function index(Request $request) {
+        $gender = ['Male', 'Female'];
+        $hobby = Hobby::all()->pluck('name')->toArray();
+
+        if($request->gender != null && $request->gender != 'Select By Gender') {
+            $gender = [$request->gender];
         }
+
+        if($request->hobby != null) {
+            $hobbiesArray = explode(',', $request->hobby);
+
+            $hobby = $hobbiesArray;
+        }
+
+        $query = User::where('isPrivate', '=', false)
+            ->whereIn('gender', $gender)
+            ->where(function($query) use ($hobby) {
+                foreach ($hobby as $item) {
+                    $query->orWhere('fields_of_hobby', 'LIKE', '%' . $item . '%');
+                }
+            });
+
+        if (Auth::check()) {
+            $query->where('id', '!=', Auth::user()->id);
+        }
+
+        $users = $query->paginate(10);
 
         if(session("status") != null) {
             $friendRequest = session("status");

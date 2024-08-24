@@ -14,6 +14,13 @@
                 <p class="card-text">{{ $item->friend->fields_of_hobby }}</p>
             </div>
             <div class="card-footer text-body-secondary d-flex justify-content-end">
+                <form action="{{ route('remove-friend-request') }}" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{ $item->friend_id }}" name="friend_id">
+                    <button type="submit" class="btn btn-danger">
+                        Remove Friend
+                    </button>
+                </form>
                 <form action="{{ route('message', $item->friend_id) }}" method="GET">
                     @csrf
                     <button type="submit" class="btn btn-primary">

@@ -46,6 +46,7 @@ Route::middleware(['auth', 'paid'])->group(function () {
     Route::post('/update-coin', [UserController::class, 'updateCoin'])->name('update-coin');
     Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send-message');
     Route::post('/send-friend-request', [FriendController::class, 'sendFriendRequest'])->name('send-friend-request');
+    Route::post('/remove-friend-request', [FriendController::class, 'removeFriendRequest'])->name('remove-friend-request');
     Route::post('/accept-friend-request', [FriendController::class, 'acceptFriendRequest'])->name('accept-friend-request');
     Route::post('/decline-friend-request', [FriendController::class, 'declineFriendRequest'])->name('decline-friend-request');
 });

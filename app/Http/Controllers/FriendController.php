@@ -85,4 +85,16 @@ class FriendController extends Controller
 
         return view("friend", compact("users"));
     }
+
+    public function removeFriendRequest(Request $request) {
+        $friendRequest1 = Friend::where("user_id", "=", Auth::user()->id)
+                        ->where("friend_id", "=", $request->friend_id)
+                        ->delete();
+
+        $friendRequest2 = Friend::where("user_id", "=", $request->friend_id)
+        ->where("friend_id", "=", Auth::user()->id)
+        ->delete();
+
+        return redirect()->route('friend');
+    }
 }

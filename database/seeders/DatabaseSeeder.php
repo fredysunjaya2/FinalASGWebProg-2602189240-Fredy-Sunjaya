@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HobbySeeder::class,
             UserAvatarSeeder::class,
+            FriendSeeder::class,
         ]);
     }
 }

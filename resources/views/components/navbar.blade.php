@@ -12,28 +12,31 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeHome')" aria-current="page" href="#">Home</a>
+                    <a class="nav-link @yield('activeHome')" aria-current="page" href="{{ route('dashboard') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeWishlist')" href="#">Wishlist</a>
+                    <a class="nav-link @yield('activeWishlist')" href="{{ route('wishlist') }}">Wishlist</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeFriends')" href="#">Friends</a>
+                    <a class="nav-link @yield('activeFriend')" href="{{ route('friend') }}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @yield('activeNotification')" href="#">Notifications</a>
                 </li>
             </ul>
             <ul class="ms-auto me-3">
                 @if (Auth::check())
                 <li class="nav-item d-flex align-items-center justify-center">
                     <p class="text-danger pt-3 me-5 fs-5">Coin: {{ Auth::user()->coin }}</p>
-                    <form method="POST" action="{{ url('/logout') }}">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-primary">Logout</button>
                     </form>
                 </li>
                 @else
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ url('/login') }}" class="btn btn-secondary me-4">Login</a>
-                    <a href="{{ url('/register') }}" class="btn btn-primary">Register</a>
+                    <a href="{{ route('login') }}" class="btn btn-secondary me-4">Login</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
                 </li>
                 @endif
             </ul>

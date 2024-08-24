@@ -39,7 +39,10 @@ Route::middleware(['auth', 'paid'])->group(function () {
     Route::get('/message/{id}', [MessageController::class, 'index'])->name('message');
     Route::get('/change-locale/{locale}', [UserController::class, 'changeLocale'])->name('change-locale');
     Route::get('/topup', [UserController::class, 'topup'])->name('topup');
+    Route::get('/settings', [UserController::class, 'settings'])->name('settings');
 
+    Route::post('/update-private', [UserController::class, 'updatePrivate'])->name('update-private');
+    Route::post('/update-public', [UserController::class, 'updatePublic'])->name('update-public');
     Route::post('/update-coin', [UserController::class, 'updateCoin'])->name('update-coin');
     Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send-message');
     Route::post('/send-friend-request', [FriendController::class, 'sendFriendRequest'])->name('send-friend-request');

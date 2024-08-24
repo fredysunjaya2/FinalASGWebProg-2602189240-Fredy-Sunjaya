@@ -81,4 +81,33 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function settings() {
+        return view('settings');
+    }
+
+    public function updatePrivate() {
+        $user = Auth::user();
+
+        User::where("id", $user->id)->update([
+            "isPrivate" => true,
+            "current_avatar" => rand(153, 155),
+            "coin" => $user->coin - 50
+        ]);
+
+        return redirect()->route('dashboard');
+    }
+
+    public function updatePublic() {
+        $user = Auth::user();
+
+        User::where("id", $user->id)->update([
+            "isPrivate" => false,
+            "current_avatar" => 152,
+            "coin" => $user->coin - 5
+        ]);
+
+        return redirect()->route('dashboard');
+    }
 }
+

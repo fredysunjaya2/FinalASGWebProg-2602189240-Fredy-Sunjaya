@@ -10,4 +10,5 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'topup' => 'Top-up',
+    'settings' => 'Settings',
 ];

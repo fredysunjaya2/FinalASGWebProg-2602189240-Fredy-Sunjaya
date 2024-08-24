@@ -10,4 +10,5 @@ return [
     'login' => 'Masuk',
     'register' => 'Daftar',
     'topup' => 'Top-up',
+    'settings' => 'pengaturan',
 ];

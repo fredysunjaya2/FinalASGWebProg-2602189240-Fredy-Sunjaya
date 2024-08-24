@@ -31,6 +31,10 @@
                     <a class="nav-link @yield('activeTopup')" href="{{ route('topup') }}">{{
                         __('navbar.topup') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link @yield('activeSettings')" href="{{ route('settings') }}">{{
+                        __('navbar.settings') }}</a>
+                </li>
             </ul>
             <ul class="d-flex flex-row ms-auto me-3">
                 <li class="nav-item d-flex align-items-center justify-center me-5">

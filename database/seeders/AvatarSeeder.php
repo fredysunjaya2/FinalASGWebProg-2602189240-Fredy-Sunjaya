@@ -41,7 +41,7 @@ class AvatarSeeder extends Seeder
             "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar",
             "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno",
             "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite",
-            "Mewtwo", "Mew", "New Trainer"
+            "Mewtwo", "Mew", "New Trainer", "Bear 1", "Bear 2", "Bear 3"
         ];
 
         $dataLength = count($pokemon_gen1);

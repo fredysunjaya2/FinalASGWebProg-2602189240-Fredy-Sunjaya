@@ -27,14 +27,14 @@
             <h6>Gender: </h6>
             <div class="form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="Female" {{
-                    old('gender') == 'Female' ? 'checked' : '' }}>
+                    old('gender')=='Female' ? 'checked' : '' }}>
                 <label class="form-check-label" for="flexRadioDefault1">
                     Female
                 </label>
             </div>
             <div class="form-check d-inline-block">
-                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Male"
-                    {{  old('gender') == 'Male' ? 'checked' : '' }}>
+                <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="Male" {{
+                    old('gender')=='Male' ? 'checked' : '' }}>
                 <label class="form-check-label" for="flexRadioDefault2">
                     Male
                 </label>
@@ -89,6 +89,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
+    <a href="{{ route('login') }}">Click Here to Login</a>
     @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $item)

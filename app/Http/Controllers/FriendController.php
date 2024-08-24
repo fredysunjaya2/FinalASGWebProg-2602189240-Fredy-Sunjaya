@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Friend;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,10 +32,15 @@ class FriendController extends Controller
         if ($friendRequest != null && $friendRequest->status != "Declined") {
             return redirect()->route('dashboard')->with("status", $friendRequest->status);
         } else {
-            Friend::create([
+            $friend = Friend::create([
                 "user_id" => Auth::user()->id,
                 "friend_id" => $request->id,
                 "status" => "Pending",
+            ]);
+
+            Notification::create([
+                "user_id" => $request->id,
+                "description" => "There is an incoming friend request from " . Auth::user()->name,
             ]);
 
             return redirect()->route('dashboard')->with("status", "Request");

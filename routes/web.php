@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,7 @@ Route::middleware(['auth', 'paid'])->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/wishlist', [FriendController::class, 'friendRequestIndex'])->name('wishlist');
     Route::get('/friend', [FriendController::class, 'friendIndex'])->name('friend');
+    Route::get('/notification', [NotificationController::class, 'index'])->name('notification');
     Route::get('/message/{id}', [MessageController::class, 'index'])->name('message');
 
     Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send-message');

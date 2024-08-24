@@ -21,7 +21,7 @@
                     <a class="nav-link @yield('activeFriend')" href="{{ route('friend') }}">Friends</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeNotification')" href="#">Notifications</a>
+                    <a class="nav-link @yield('activeNotification')" href="{{ route('notification') }}">Notifications</a>
                 </li>
             </ul>
             <ul class="ms-auto me-3">

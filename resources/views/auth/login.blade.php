@@ -34,6 +34,8 @@
         </div>
         <button type="submit" class="btn btn-primary">Log In</button>
     </form>
+    <a href="{{ route('register') }}">Click Here to Register</a>
+
     @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $item)

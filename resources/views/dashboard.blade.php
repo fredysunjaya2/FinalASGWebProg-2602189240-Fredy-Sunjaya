@@ -14,13 +14,13 @@
                 <p class="card-text">{{ $item->fields_of_hobby }}</p>
             </div>
             <div class="card-footer text-body-secondary d-flex justify-content-end">
-                <button type="submit">
+                <button type="submit" class="btn btn-primary">
                     <i class="bi bi-hand-thumbs-up"></i>
                 </button>
             </div>
         </div>
     </div>
     @endforeach
-    {{ $users->links() }}
 </div>
+{{ $users->links() }}
 @endsection

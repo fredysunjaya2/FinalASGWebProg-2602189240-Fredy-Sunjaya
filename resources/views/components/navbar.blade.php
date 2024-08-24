@@ -23,7 +23,8 @@
             </ul>
             <ul class="ms-auto me-3">
                 @if (Auth::check())
-                <li class="nav-item d-flex align-items-center">
+                <li class="nav-item d-flex align-items-center justify-center">
+                    <p class="text-danger pt-3 me-5 fs-5">Coin: {{ Auth::user()->coin }}</p>
                     <form method="POST" action="{{ url('/logout') }}">
                         @csrf
                         <button type="submit" class="btn btn-primary">Logout</button>
@@ -31,7 +32,7 @@
                 </li>
                 @else
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ url('/login') }}" class="btn btn-secondary">Login</a>
+                    <a href="{{ url('/login') }}" class="btn btn-secondary me-4">Login</a>
                     <a href="{{ url('/register') }}" class="btn btn-primary">Register</a>
                 </li>
                 @endif

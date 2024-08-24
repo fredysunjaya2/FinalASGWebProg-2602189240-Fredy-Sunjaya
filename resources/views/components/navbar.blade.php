@@ -12,31 +12,44 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeHome')" aria-current="page" href="{{ route('dashboard') }}">Home</a>
+                    <a class="nav-link @yield('activeHome')" aria-current="page" href="{{ route('dashboard') }}">{{
+                        __('navbar.home') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeWishlist')" href="{{ route('wishlist') }}">Wishlist</a>
+                    <a class="nav-link @yield('activeWishlist')" href="{{ route('wishlist') }}">{{ __('navbar.wishlist')
+                        }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeFriend')" href="{{ route('friend') }}">Friends</a>
+                    <a class="nav-link @yield('activeFriend')" href="{{ route('friend') }}">{{ __('navbar.friends')
+                        }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('activeNotification')" href="{{ route('notification') }}">Notifications</a>
+                    <a class="nav-link @yield('activeNotification')" href="{{ route('notification') }}">{{
+                        __('navbar.notifications') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @yield('activeTopup')" href="{{ route('topup') }}">{{
+                        __('navbar.topup') }}</a>
                 </li>
             </ul>
-            <ul class="ms-auto me-3">
+            <ul class="d-flex flex-row ms-auto me-3">
+                <li class="nav-item d-flex align-items-center justify-center me-5">
+                    <a href="{{ route('change-locale', 'en') }}" class="text-info pt-3 fs-5">EN</a>
+                    <p class="text-info pt-3 fs-5 px-2">|</p>
+                    <a href="{{ route('change-locale', 'id') }}" class="text-info pt-3 fs-5">ID</a>
+                </li>
                 @if (Auth::check())
                 <li class="nav-item d-flex align-items-center justify-center">
                     <p class="text-danger pt-3 me-5 fs-5">Coin: {{ Auth::user()->coin }}</p>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Logout</button>
+                        <button type="submit" class="btn btn-primary">{{ __('navbar.logout') }}</button>
                     </form>
                 </li>
                 @else
                 <li class="nav-item d-flex align-items-center">
-                    <a href="{{ route('login') }}" class="btn btn-secondary me-4">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Register</a>
+                    <a href="{{ route('login') }}" class="btn btn-secondary me-4">{{ __('navbar.login') }}</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary">{{ __('navbar.register') }}</a>
                 </li>
                 @endif
             </ul>

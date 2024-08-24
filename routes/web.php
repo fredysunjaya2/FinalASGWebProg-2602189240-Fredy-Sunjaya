@@ -37,7 +37,10 @@ Route::middleware(['auth', 'paid'])->group(function () {
     Route::get('/friend', [FriendController::class, 'friendIndex'])->name('friend');
     Route::get('/notification', [NotificationController::class, 'index'])->name('notification');
     Route::get('/message/{id}', [MessageController::class, 'index'])->name('message');
+    Route::get('/change-locale/{locale}', [UserController::class, 'changeLocale'])->name('change-locale');
+    Route::get('/topup', [UserController::class, 'topup'])->name('topup');
 
+    Route::post('/update-coin', [UserController::class, 'updateCoin'])->name('update-coin');
     Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send-message');
     Route::post('/send-friend-request', [FriendController::class, 'sendFriendRequest'])->name('send-friend-request');
     Route::post('/accept-friend-request', [FriendController::class, 'acceptFriendRequest'])->name('accept-friend-request');

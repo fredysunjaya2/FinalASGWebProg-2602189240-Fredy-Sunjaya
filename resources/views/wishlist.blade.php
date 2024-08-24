@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title', 'Home')
-@section('activeHome', 'active')
+@section('activeWishlist', 'active')
 
 @section('content')
 <div class="row row-cols-1 row-cols-md-5 g-4">

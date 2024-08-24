@@ -42,32 +42,32 @@ class FriendController extends Controller
     }
 
     public function acceptFriendRequest(Request $request) {
-        Friend::where('user_id', '=', Auth::user()->id)
-        ->where('friend_id', '=', $request->id)
-        ->update([
-            'status' => 'Accepted',
-        ]);
-
         Friend::where('user_id', '=', $request->id)
         ->where('friend_id', '=', Auth::user()->id)
         ->update([
             'status' => 'Accepted',
         ]);
 
+        Friend::create([
+            "user_id" => Auth::user()->id,
+            "friend_id" => $request->id,
+            "status" => "Accepted",
+        ]);
+
         return redirect()->route('wishlist');
     }
 
     public function declineFriendRequest(Request $request) {
-        Friend::where('user_id', '=', Auth::user()->id)
-        ->where('friend_id', '=', $request->id2)
+        Friend::where('user_id', '=', $request->id)
+        ->where('friend_id', '=', Auth::user()->id)
         ->update([
             'status' => 'Declined',
         ]);
 
-        Friend::where('user_id', '=', $request->id2)
-        ->where('friend_id', '=', Auth::user()->id)
-        ->update([
-            'status' => 'Declined',
+        Friend::create([
+            "user_id" => Auth::user()->id,
+            "friend_id" => $request->id,
+            "status" => "Declined",
         ]);
 
         return redirect()->route('wishlist');
